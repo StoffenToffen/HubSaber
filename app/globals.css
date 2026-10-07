@@ -97,6 +97,42 @@ button {
   }
 }
 
+.header-nav {
+  display: none;
+}
+
+@media screen and (min-width: 800px) {
+  .header-nav {
+    display: block;
+  }
+
+  .header-row button {
+    display: none;
+  }
+}
+
+.header-nav__list {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  list-style: none;
+
+  li:not(:last-child) {
+    border-right: 2px solid white;
+  }
+}
+
+.header-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-inline: 1rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .mobile-nav {
   background-color: var(--color-bg);
   position: absolute;
