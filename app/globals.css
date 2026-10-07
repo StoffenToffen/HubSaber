@@ -47,12 +47,39 @@ footer {
   grid-template-columns: minmax(0, 1fr) minmax(0, 800px) minmax(0, 1fr);
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .container {
   grid-column: 2;
   padding: 2rem 1rem;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.heading {
+  font-family: var(--font-expletus);
+  font-weight: 600;
+}
+
+/* Header */
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
 }
