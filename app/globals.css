@@ -60,12 +60,16 @@ button {
 
 .container {
   grid-column: 2;
-  padding: 2rem 1rem;
+  padding: 1rem;
 }
 
 .heading {
   font-family: var(--font-expletus);
   font-weight: 600;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Header */
@@ -74,6 +78,11 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  button:hover {
+    filter: brightness(0) invert(70%) sepia(41%) saturate(6848%)
+      hue-rotate(327deg) brightness(106%) contrast(101%);
+  }
 }
 
 .header-logo {
@@ -82,4 +91,43 @@ button {
   align-items: center;
   gap: 0.5rem;
   font-size: 1.5rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.mobile-nav {
+  background-color: var(--color-bg);
+  position: absolute;
+  inset: 0;
+  border: 2px solid white;
+}
+
+.mobile-nav__top {
+  border-bottom: 2px solid white;
+  display: flex;
+  justify-content: end;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  button:hover {
+    filter: brightness(0) invert(70%) sepia(41%) saturate(6848%)
+      hue-rotate(327deg) brightness(106%) contrast(101%);
+  }
+}
+
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 100%;
+  font-size: 1.25rem;
+  border-bottom: 2px solid transparent;
+  padding: 1rem;
+
+  &:hover {
+    border-color: white;
+  }
 }
