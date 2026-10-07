@@ -167,3 +167,11 @@ button {
     border-color: white;
   }
 }
+
+/* Footer */
+
+.footer-row {
+  color: var(--color-text-dark);
+  text-align: center;
+  font-size: 0.75rem;
+}
