@@ -1,0 +1,64 @@
+.homeRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.homeTitle {
+  font-size: 2rem;
+  font-weight: 300;
+  padding-block: 2rem;
+}
+
+.divider {
+  width: 15rem;
+  margin-top: 4rem;
+}
+
+.cards {
+  display: grid;
+  gap: 1rem;
+  margin-block: 4rem;
+}
+
+@media screen and (min-width: 800px) {
+  .cards {
+    grid-auto-flow: column;
+  }
+}
+
+.card {
+  background-color: var(--color-bg);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.cardTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.homeLearn {
+  composes: homeRow;
+  padding-block: 4rem;
+}
+
+.homeLink {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: var(--border);
+  transition: 0.1s;
+
+  &:hover {
+    box-shadow: var(--shadow);
+  }
+}
