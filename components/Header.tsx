@@ -14,52 +14,54 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header>
-      <div className="container header-row">
-        <Link href="/" className="heading header-logo">
-          <Image src={logo} alt="" width={32} />
-          HubSaber
-        </Link>
+    <>
+      <header>
+        <div className="container header-row">
+          <Link href="/" className="heading header-logo">
+            <Image src={logo} alt="" width={32} />
+            HubSaber
+          </Link>
 
-        <button
-          type="button"
-          onClick={() => {
-            document.body.style.overflow = "hidden";
-            setMenuOpen(true);
-          }}
-          className="header-nav__btn"
-        >
-          <Image src={menuIcon} alt="menu" width={32} />
-        </button>
+          <button
+            type="button"
+            onClick={() => {
+              document.body.style.overflow = "hidden";
+              setMenuOpen(true);
+            }}
+            className="header-nav__btn"
+          >
+            <Image src={menuIcon} alt="menu" width={32} />
+          </button>
 
-        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          <nav className="header-nav">
+            <ul className="header-nav__list">
+              <li>
+                <Link href="/" className="header-link">
+                  <Image src={homeIcon} alt="HubSaber" width={24} />
+                  Home
+                </Link>
+              </li>
 
-        <nav className="header-nav">
-          <ul className="header-nav__list">
-            <li>
-              <Link href="/" className="header-link">
-                <Image src={homeIcon} alt="HubSaber" width={24} />
-                Home
-              </Link>
-            </li>
+              <li>
+                <Link href="/maps" className="header-link">
+                  <Image src={mapIcon} alt="HubSaber" width={24} />
+                  Maps
+                </Link>
+              </li>
 
-            <li>
-              <Link href="/maps" className="header-link">
-                <Image src={mapIcon} alt="HubSaber" width={24} />
-                Maps
-              </Link>
-            </li>
+              <li>
+                <Link href="/about" className="header-link">
+                  <Image src={infoIcon} alt="HubSaber" width={24} />
+                  About us
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 
-            <li>
-              <Link href="/about" className="header-link">
-                <Image src={infoIcon} alt="HubSaber" width={24} />
-                About us
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+      <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+    </>
   );
 };
 

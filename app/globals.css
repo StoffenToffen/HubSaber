@@ -29,6 +29,11 @@ body {
   font-family: var(--font-inter);
 }
 
+header {
+  position: fixed;
+  width: 100%;
+}
+
 main {
   flex: 1;
   background: radial-gradient(
@@ -147,7 +152,7 @@ button {
 
 .mobile-nav {
   background-color: var(--color-bg);
-  position: absolute;
+  position: fixed;
   inset: 0;
   border: var(--border);
 }
