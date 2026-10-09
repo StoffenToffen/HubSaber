@@ -14,7 +14,13 @@ const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps) => {
   return (
     <nav className={`mobile-nav ${!menuOpen ? "hidden" : ""}`}>
       <div className="mobile-nav__top">
-        <button type="button" onClick={() => setMenuOpen(false)}>
+        <button
+          type="button"
+          onClick={() => {
+            document.body.style.overflow = "unset";
+            setMenuOpen(false);
+          }}
+        >
           <Image src={xIcon} alt="close menu" width={32} />
         </button>
       </div>

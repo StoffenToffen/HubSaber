@@ -21,7 +21,13 @@ const Header = () => {
           HubSaber
         </Link>
 
-        <button type="button" onClick={() => setMenuOpen(true)}>
+        <button
+          type="button"
+          onClick={() => {
+            document.body.style.overflow = "hidden";
+            setMenuOpen(true);
+          }}
+        >
           <Image src={menuIcon} alt="menu" width={32} />
         </button>
 
