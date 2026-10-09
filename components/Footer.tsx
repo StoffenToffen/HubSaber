@@ -1,9 +1,11 @@
 const Footer = () => {
   return (
     <footer>
-      Footer
+      <div className="container footer-row">
+        Copyright © {new Date().getFullYear()} | Steffen Tveit
+      </div>
     </footer>
   );
-}
+};
 
 export default Footer;
