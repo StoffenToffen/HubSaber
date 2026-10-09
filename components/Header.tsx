@@ -27,6 +27,7 @@ const Header = () => {
             document.body.style.overflow = "hidden";
             setMenuOpen(true);
           }}
+          className="header-nav__btn"
         >
           <Image src={menuIcon} alt="menu" width={32} />
         </button>
