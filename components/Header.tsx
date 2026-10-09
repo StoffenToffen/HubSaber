@@ -17,7 +17,7 @@ const Header = () => {
     <header>
       <div className="container header-row">
         <Link href="/" className="heading header-logo">
-          <Image src={logo} alt="HubSaber" width={32} />
+          <Image src={logo} alt="" width={32} />
           HubSaber
         </Link>
 

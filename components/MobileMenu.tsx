@@ -27,17 +27,17 @@ const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps) => {
 
       <Link href="/home" className="mobile-nav__link">
         Home
-        <Image src={homeIcon} alt="home" width={32} />
+        <Image src={homeIcon} alt="" width={32} />
       </Link>
 
       <Link href="/maps" className="mobile-nav__link">
         Maps
-        <Image src={mapIcon} alt="maps" width={32} />
+        <Image src={mapIcon} alt="" width={32} />
       </Link>
 
       <Link href="/about" className="mobile-nav__link">
         About us
-        <Image src={infoIcon} alt="about us" width={32} />
+        <Image src={infoIcon} alt="" width={32} />
       </Link>
     </nav>
   );
