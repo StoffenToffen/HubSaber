@@ -33,16 +33,15 @@ const Slider2 = ({ min, max }: { min: number; max: number }) => {
 
   return (
     <div className={styles.sliderWrapper}>
-      <span className={styles.sliderLabel}>Notes/s</span>
-
       <div className={styles.slider}>
         <div className={styles.sliderTrack} />
 
         <div ref={range} className={styles.sliderRange} />
 
         <div className={styles.sliderValues}>
-          <span>{minValue / 10}</span>
-          <span>{maxValue / 10}</span>
+          <span className={styles.sliderValuesMin}>{minValue / 10}</span>
+          <span>Notes/s</span>
+          <span className={styles.sliderValuesMax}>{maxValue / 10}</span>
         </div>
       </div>
 

@@ -4,10 +4,6 @@
   padding-bottom: 2rem;
 }
 
-.sliderLabel {
-  font-size: 0.75rem;
-}
-
 .slider {
   position: relative;
   width: 100%;
@@ -32,11 +28,19 @@
 
 .sliderValues {
   position: absolute;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   width: 100%;
   padding-top: 1rem;
   font-size: 0.75rem;
+}
+
+.sliderValuesMin {
+  text-align: left;
+}
+
+.sliderValuesMax {
+  text-align: right;
 }
 
 .thumb {

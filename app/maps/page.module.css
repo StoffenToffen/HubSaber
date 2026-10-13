@@ -55,6 +55,17 @@
   transition: 0.1s;
 }
 
+.formContainer {
+  display: grid;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+  .formContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .filter {
   color: var(--color-text-dark);
   background-color: var(--color-bg);
