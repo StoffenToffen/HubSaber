@@ -1,5 +1,8 @@
 "use client";
 
+import Slider from "@/components/Slider/Slider";
+import Image from "next/image";
+
 import arrowIcon from "@/public/arrow.svg";
 import clockIcon from "@/public/clock.svg";
 import cover from "@/public/cover.png";
@@ -8,7 +11,7 @@ import likeIcon from "@/public/like.svg";
 import metronomeIcon from "@/public/metronome.svg";
 import npsIcon from "@/public/notes-per-second.svg";
 import searchIcon from "@/public/search.svg";
-import Image from "next/image";
+
 import styles from "./page.module.css";
 
 const Page = () => {
@@ -17,7 +20,7 @@ const Page = () => {
       <section>
         <h1 className="heading">Maps</h1>
 
-        <form action="">
+        <form action="" className={styles.form}>
           <div className={styles.search}>
             <input
               type="search"
@@ -40,9 +43,25 @@ const Page = () => {
             <Image src={arrowIcon} alt="Open filters" width={20} />
           </button>
 
-          <div>
-            <span>Notes/s</span>
-            <input type="range" />
+          <div className={styles.sort}>
+            <select
+              name=""
+              id=""
+              style={{
+                backgroundImage: `url(${arrowIcon.src})`,
+              }}
+              className={styles.sortInput}
+            >
+              <option value="Latest">Latest</option>
+            </select>
+
+            <button type="button" className={styles.sortBtn}>
+              <Image
+                src={descendingIcon}
+                alt="descending"
+                className={styles.sortBtnIcon}
+              />
+            </button>
           </div>
 
           <div className={styles.dates}>
@@ -69,26 +88,7 @@ const Page = () => {
             />
           </div>
 
-          <div className={styles.sort}>
-            <select
-              name=""
-              id=""
-              style={{
-                backgroundImage: `url(${arrowIcon.src})`,
-              }}
-              className={styles.sortInput}
-            >
-              <option value="Latest">Latest</option>
-            </select>
-
-            <button type="button" className={styles.sortBtn}>
-              <Image
-                src={descendingIcon}
-                alt="descending"
-                className={styles.sortBtnIcon}
-              />
-            </button>
-          </div>
+          <Slider min={0} max={160} />
         </form>
       </section>
 
