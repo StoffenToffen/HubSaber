@@ -97,7 +97,7 @@ const Page = () => {
       <section className={styles.maps}>
         {Array.from({ length: 8 }, (_, i) => (
           <div key={i} className={styles.map}>
-            <Image src={cover} alt="map name" width={104} />
+            <Image src={cover} alt="map name" width={100} />
 
             <div className={styles.mapInfo}>
               <h2 className={`heading ${styles.mapTitle}`}>
