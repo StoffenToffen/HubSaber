@@ -1,0 +1,150 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-block: 1rem;
+}
+
+.search {
+  display: flex;
+  box-shadow: var(--shadow);
+  height: 2.5rem;
+}
+
+.searchInput {
+  color: white;
+  background-color: var(--color-bg);
+  border: var(--border);
+  border-right: 0;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+
+  &::placeholder {
+    color: var(--color-text-dark);
+  }
+}
+
+.searchSubmit {
+  background-color: var(--color-accent);
+  display: flex;
+  border: var(--border);
+  padding: 0.5rem;
+  transition: 0.1s;
+
+  &:hover {
+    background-color: var(--color-bg);
+
+    & .searchSubmitIcon {
+      filter: none;
+    }
+  }
+}
+
+.searchSubmitIcon {
+  width: 100%;
+  height: auto;
+  filter: invert(1);
+  transition: 0.1s;
+}
+
+.formContainer {
+  display: grid;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+  .formContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.filter {
+  color: var(--color-text-dark);
+  background-color: var(--color-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 2.5rem;
+  border: var(--border);
+  padding: 0.5rem;
+  transition: 0.1s;
+
+  &:hover {
+    box-shadow: var(--shadow);
+  }
+}
+
+.sort {
+  display: flex;
+  height: 2.5rem;
+}
+
+.sortInput {
+  appearance: none;
+  color: white;
+  background-color: var(--color-bg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 0.5rem);
+  background-size: 1.25rem;
+  border: var(--border);
+  border-right: 0;
+  padding: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.1s;
+
+  &:hover {
+    box-shadow: var(--shadow);
+  }
+}
+
+.sortBtn {
+  background-color: var(--color-accent);
+  display: flex;
+  border: var(--border);
+  padding: 0.5rem;
+  transition: 0.1s;
+
+  &:hover {
+    background-color: var(--color-bg);
+
+    & .sortBtnIcon {
+      filter: none;
+    }
+  }
+}
+
+.sortBtnIcon {
+  width: 100%;
+  height: auto;
+  filter: invert(1);
+  transition: 0.1s;
+}
+
+.dates {
+  background-color: var(--color-bg);
+  display: grid;
+  grid-template-columns: minmax(0, 50%) minmax(0, 1rem) minmax(0, 50%);
+  align-items: center;
+  border: var(--border);
+  height: 2.5rem;
+}
+
+.date {
+  color: var(--color-text-dark);
+  background-color: var(--color-bg);
+  color-scheme: dark;
+  height: 2rem;
+  border: none;
+  text-align: center;
+
+  &::placeholder {
+    color: var(--color-text-dark);
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+}
