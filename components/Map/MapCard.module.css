@@ -1,5 +1,4 @@
 .map {
-  background: linear-gradient(90deg, rgb(5, 92, 5), var(--color-bg) 30%);
   display: flex;
   border: var(--border);
   padding: 0.5rem;
@@ -45,11 +44,15 @@
 
 .mapDifficulties {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   padding-top: 0.5rem;
 }
 
 .mapDifficulty {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
   font-size: 0.66rem;
   border: 1px solid white;
   padding: 0.1rem 0.25rem;

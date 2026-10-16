@@ -1,17 +1,20 @@
+interface MapperType {
+  id: number;
+  name: string;
+  avatar: string;
+  type: string;
+  admin: boolean;
+  curator: boolean;
+  seniorCurator: boolean;
+  verifiedMapper?: boolean;
+  playlistUrl: string;
+}
+
 export interface MapType {
   id: string;
   name: string;
   description: string;
-  uploader: {
-    id: number;
-    name: string;
-    avatar: string;
-    type: string;
-    admin: boolean;
-    curator: boolean;
-    seniorCurator: boolean;
-    playlistUrl: string;
-  };
+  uploader: MapperType;
   metadata: {
     bpm: number;
     duration: number;
@@ -65,11 +68,13 @@ export interface MapType {
     coverURL: string;
     previewURL: string;
   }[];
+  curatedAt?: string;
   createdAt: string;
   updatedAt: string;
   lastPublishedAt: string;
   tags: string[];
   bookmarked: boolean;
+  collaborators?: MapperType[];
   declaredAi: string;
   blRanked: boolean;
   blQualified: boolean;

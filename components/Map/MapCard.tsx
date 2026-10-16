@@ -6,6 +6,15 @@ import npsIcon from "@/public/notes-per-second.svg";
 import Image from "next/image";
 import styles from "./MapCard.module.css";
 
+import threeSixtyDegree from "@/public/diffIcons/360-degree.svg";
+import ninetyDegree from "@/public/diffIcons/90-degree.svg";
+import lawless from "@/public/diffIcons/lawless.svg";
+import legacy from "@/public/diffIcons/legacy.svg";
+import lightShow from "@/public/diffIcons/light-show.svg";
+import noArrows from "@/public/diffIcons/no-arrows.svg";
+import oneSaber from "@/public/diffIcons/one-saber.svg";
+import standard from "@/public/diffIcons/standard.svg";
+
 const MapCard = ({ map }: { map: MapType }) => {
   const calculateTimeSince = (dateTime: string): string => {
     const createTime = new Date(dateTime).getTime();
@@ -37,10 +46,43 @@ const MapCard = ({ map }: { map: MapType }) => {
     else return diff;
   };
 
+  const getDiffIcon = (diff: string) => {
+    switch (diff) {
+      case "Standard":
+        return standard;
+      case "OneSaber":
+        return oneSaber;
+      case "NoArrows":
+        return noArrows;
+      case "90Degree":
+        return ninetyDegree;
+      case "360Degree":
+        return threeSixtyDegree;
+      case "Lightshow":
+        return lightShow;
+      case "Lawless":
+        return lawless;
+      default:
+        return legacy;
+    }
+  };
+
+  const getBGColor = (map: MapType) => {
+    if (map.ranked || map.blRanked) return "rgb(92, 83, 5)";
+    else if (map.curatedAt) return "rgb(5, 92, 5)";
+    else if (map.uploader.verifiedMapper) return "rgb(92, 5, 85)";
+    else return "var(--color-bg)";
+  };
+
   const newestVersion = map.versions[map.versions.length - 1];
 
   return (
-    <div className={styles.map}>
+    <div
+      className={styles.map}
+      style={{
+        background: `linear-gradient(90deg, ${getBGColor(map)}, var(--color-bg) 30%)`,
+      }}
+    >
       <Image
         src={map.versions[0].coverURL}
         alt={map.name}
@@ -77,12 +119,18 @@ const MapCard = ({ map }: { map: MapType }) => {
 
         <div className={styles.mapDifficulties}>
           {newestVersion.diffs.map((diff) => (
-            <span
+            <div
               key={`${diff.characteristic} ${diff.difficulty}`}
               className={styles.mapDifficulty}
             >
-              {formatDiff(diff.difficulty)}
-            </span>
+              <Image
+                src={getDiffIcon(diff.characteristic)}
+                alt={diff.characteristic}
+                width={14}
+              />
+
+              <span>{formatDiff(diff.difficulty)}</span>
+            </div>
           ))}
         </div>
       </div>

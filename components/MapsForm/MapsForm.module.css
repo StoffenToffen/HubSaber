@@ -103,6 +103,7 @@
 .sortBtn {
   background-color: var(--color-accent);
   display: flex;
+  flex-shrink: 0;
   border: var(--border);
   padding: 0.5rem;
   transition: 0.1s;
