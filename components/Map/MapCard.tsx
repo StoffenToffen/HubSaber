@@ -4,6 +4,7 @@ import likeIcon from "@/public/like.svg";
 import metronomeIcon from "@/public/metronome.svg";
 import npsIcon from "@/public/notes-per-second.svg";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./MapCard.module.css";
 
 import threeSixtyDegree from "@/public/diffIcons/360-degree.svg";
@@ -91,7 +92,9 @@ const MapCard = ({ map }: { map: MapType }) => {
       />
 
       <div className={styles.mapInfo}>
-        <h2 className={`heading ${styles.mapTitle}`}>{map.name}</h2>
+        <Link href={`/maps/${map.id}`}>
+          <h2 className={`heading ${styles.mapTitle}`}>{map.name}</h2>
+        </Link>
 
         <div>
           <span className={styles.mapAuthor}>
