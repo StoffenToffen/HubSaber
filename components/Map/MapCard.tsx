@@ -75,10 +75,19 @@ const MapCard = ({ map }: { map: MapType }) => {
     else return "var(--color-bg)";
   };
 
+  const getMapStatus = (map: MapType) => {
+    if (map.ranked) return "Ranked Score Saber";
+    else if (map.blRanked) return "Ranked Beat Leader";
+    else if (map.curatedAt) return "Curated";
+    else if (map.uploader.verifiedMapper) return "Verified";
+    else return "";
+  };
+
   const newestVersion = map.versions[map.versions.length - 1];
 
   return (
     <div
+      title={getMapStatus(map)}
       className={styles.map}
       style={{
         background: `linear-gradient(90deg, ${getBGColor(map)}, var(--color-bg) 30%)`,
@@ -100,29 +109,39 @@ const MapCard = ({ map }: { map: MapType }) => {
           <span className={styles.mapAuthor}>
             By <strong>{map.uploader.name} </strong>
           </span>
-          <span className={styles.mapPublished}>
+          <span title={newestVersion.createdAt} className={styles.mapPublished}>
             {calculateTimeSince(newestVersion.createdAt)}
           </span>
         </div>
 
         <div className={styles.mapStats}>
           <span className={styles.mapStat}>
-            <Image src={npsIcon} alt="Notes per second" width={14} />
+            <Image
+              src={npsIcon}
+              alt="Notes per second"
+              width={14}
+              title="Notes per second"
+            />
             {newestVersion.diffs[newestVersion.diffs.length - 1].nps.toFixed(1)}
           </span>
           <span className={styles.mapStat}>
-            <Image src={clockIcon} alt="Duration" width={14} />
+            <Image src={clockIcon} alt="Duration" width={14} title="Duration" />
             {formatSec(map.metadata.duration)}
           </span>
           <span className={styles.mapStat}>
-            <Image src={metronomeIcon} alt="Beats per minute" width={14} />
+            <Image
+              src={metronomeIcon}
+              alt="Beats per minute"
+              width={14}
+              title="Beats per minute"
+            />
             {Math.floor(map.metadata.bpm)}
           </span>
         </div>
 
-        <div className={styles.mapDifficulties}>
+        <ul className={styles.mapDifficulties}>
           {newestVersion.diffs.map((diff) => (
-            <div
+            <li
               key={`${diff.characteristic} ${diff.difficulty}`}
               className={styles.mapDifficulty}
             >
@@ -130,12 +149,13 @@ const MapCard = ({ map }: { map: MapType }) => {
                 src={getDiffIcon(diff.characteristic)}
                 alt={diff.characteristic}
                 width={14}
+                title={diff.characteristic}
               />
 
               <span>{formatDiff(diff.difficulty)}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       <div className={styles.mapRatings}>
