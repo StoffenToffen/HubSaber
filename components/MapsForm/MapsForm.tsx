@@ -14,6 +14,8 @@ const MapsForm = () => {
         <input
           type="search"
           placeholder="Search for a map"
+          name="search"
+          aria-label="Search"
           className={styles.searchInput}
         />
 
@@ -35,8 +37,7 @@ const MapsForm = () => {
 
         <div className={styles.sort}>
           <select
-            name=""
-            id=""
+            name="sort"
             style={{
               backgroundImage: `url(${arrowIcon.src})`,
             }}
@@ -58,6 +59,8 @@ const MapsForm = () => {
           <input
             type="text"
             placeholder="Start date"
+            name="start-date"
+            aria-label="Start date"
             onFocus={(e) => {
               e.target.type = "date";
               e.target.showPicker();
@@ -65,10 +68,12 @@ const MapsForm = () => {
             onBlur={(e) => (e.target.type = "text")}
             className={styles.date}
           />
-          <span>-</span>
+          <span aria-hidden>-</span>
           <input
             type="text"
             placeholder="End date"
+            name="end-date"
+            aria-label="End date"
             onFocus={(e) => {
               e.target.type = "date";
               e.target.showPicker();

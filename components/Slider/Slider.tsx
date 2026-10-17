@@ -32,7 +32,7 @@ const Slider2 = ({ min, max }: { min: number; max: number }) => {
   }, [minValue, maxValue, getPercent]);
 
   return (
-    <div className={styles.sliderWrapper}>
+    <fieldset className={styles.sliderWrapper}>
       <div className={styles.slider}>
         <div className={styles.sliderTrack} />
 
@@ -40,7 +40,7 @@ const Slider2 = ({ min, max }: { min: number; max: number }) => {
 
         <div className={styles.sliderValues}>
           <span className={styles.sliderValuesMin}>{minValue / 10}</span>
-          <span>Notes/s</span>
+          <legend>Notes/s</legend>
           <span className={styles.sliderValuesMax}>{maxValue / 10}</span>
         </div>
       </div>
@@ -50,6 +50,8 @@ const Slider2 = ({ min, max }: { min: number; max: number }) => {
         min={min}
         max={max}
         value={minValue}
+        name="min-nps"
+        aria-label="min notes per second"
         onChange={(e) => {
           setMinVal(Math.min(+e.target.value, maxValue - 1));
         }}
@@ -61,12 +63,14 @@ const Slider2 = ({ min, max }: { min: number; max: number }) => {
         min={min}
         max={max}
         value={maxValue}
+        name="max-nps"
+        aria-label="max notes per second"
         onChange={(e) => {
           setMaxVal(Math.max(+e.target.value, minValue + 1));
         }}
         className={styles.thumb}
       />
-    </div>
+    </fieldset>
   );
 };
 

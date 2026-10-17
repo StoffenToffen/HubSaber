@@ -66,6 +66,10 @@ button {
   cursor: pointer;
 }
 
+fieldset {
+  border: none;
+}
+
 /* Reusable */
 
 .container {

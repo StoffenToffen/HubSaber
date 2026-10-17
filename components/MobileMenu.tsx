@@ -19,32 +19,40 @@ const MobileMenu = ({ modalRef }: MobileMenuProps) => {
           </button>
         </div>
 
-        <Link
-          href="/"
-          onClick={() => modalRef.current?.close()}
-          className="mobile-nav__link"
-        >
-          Home
-          <Image src={homeIcon} alt="" width={32} />
-        </Link>
+        <ul>
+          <li>
+            <Link
+              href="/"
+              onClick={() => modalRef.current?.close()}
+              className="mobile-nav__link"
+            >
+              Home
+              <Image src={homeIcon} alt="" width={32} />
+            </Link>
+          </li>
 
-        <Link
-          href="/maps"
-          onClick={() => modalRef.current?.close()}
-          className="mobile-nav__link"
-        >
-          Maps
-          <Image src={mapIcon} alt="" width={32} />
-        </Link>
+          <li>
+            <Link
+              href="/maps"
+              onClick={() => modalRef.current?.close()}
+              className="mobile-nav__link"
+            >
+              Maps
+              <Image src={mapIcon} alt="" width={32} />
+            </Link>
+          </li>
 
-        <Link
-          href="/about"
-          onClick={() => modalRef.current?.close()}
-          className="mobile-nav__link"
-        >
-          About us
-          <Image src={infoIcon} alt="" width={32} />
-        </Link>
+          <li>
+            <Link
+              href="/about"
+              onClick={() => modalRef.current?.close()}
+              className="mobile-nav__link"
+            >
+              About us
+              <Image src={infoIcon} alt="" width={32} />
+            </Link>
+          </li>
+        </ul>
       </nav>
     </dialog>
   );
