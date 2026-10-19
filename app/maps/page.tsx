@@ -1,21 +1,11 @@
 import MapCard from "@/components/Map/MapCard";
 import MapsForm from "@/components/MapsForm/MapsForm";
+import { fetchData } from "../featches";
 import type { MapType } from "../types";
 import styles from "./page.module.css";
 
-const fetchMaps = async () => {
-  const response = await fetch(
-    "https://api.beatsaver.com/maps/latest?pageSize=20",
-  );
-
-  if (!response.ok) throw new Error("Error getting maps");
-
-  const data = await response.json();
-  return data.docs;
-};
-
 const Page = async () => {
-  const maps: MapType[] = await fetchMaps();
+  const maps = await fetchData<MapType[]>("maps/latest", "", "pageSize=40");
 
   return (
     <div className={`container ${styles.mapsRow}`}>
