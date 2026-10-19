@@ -7,11 +7,11 @@ import mapIcon from "@/public/map.svg";
 import menuIcon from "@/public/menu.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef } from "react";
 import MobileMenu from "./MobileMenu";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   return (
     <>
@@ -24,10 +24,7 @@ const Header = () => {
 
           <button
             type="button"
-            onClick={() => {
-              document.body.style.overflow = "hidden";
-              setMenuOpen(true);
-            }}
+            onClick={() => modalRef.current?.showModal()}
             className="header-nav__btn"
           >
             <Image src={menuIcon} alt="menu" width={32} />
@@ -60,7 +57,7 @@ const Header = () => {
         </div>
       </header>
 
-      <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <MobileMenu modalRef={modalRef} />
     </>
   );
 };

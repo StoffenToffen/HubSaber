@@ -1,0 +1,81 @@
+interface MapperType {
+  id: number;
+  name: string;
+  avatar: string;
+  type: string;
+  admin: boolean;
+  curator: boolean;
+  seniorCurator: boolean;
+  verifiedMapper?: boolean;
+  playlistUrl: string;
+}
+
+export interface MapType {
+  id: string;
+  name: string;
+  description: string;
+  uploader: MapperType;
+  metadata: {
+    bpm: number;
+    duration: number;
+    songName: string;
+    songSubName: string;
+    songAuthorName: string;
+    levelAuthorName: string;
+  };
+  stats: {
+    plays: number;
+    downloads: number;
+    upvotes: number;
+    downvotes: number;
+    score: number;
+  };
+  uploaded: string;
+  automapper: boolean;
+  ranked: boolean;
+  qualified: boolean;
+  versions: {
+    hash: string;
+    state: string;
+    createdAt: string;
+    sageScore: number;
+    diffs: {
+      njs: number;
+      offset: number;
+      notes: number;
+      bombs: number;
+      obstacles: number;
+      nps: number;
+      length: number;
+      characteristic: string;
+      difficulty: string;
+      events: number;
+      chroma: boolean;
+      me: boolean;
+      ne: boolean;
+      cinema: boolean;
+      seconds: number;
+      paritySummary: {
+        errors: number;
+        warns: number;
+        resets: number;
+      };
+      maxScore: number;
+      label: string;
+      environment: string;
+    }[];
+    downloadURL: string;
+    coverURL: string;
+    previewURL: string;
+  }[];
+  curatedAt?: string;
+  createdAt: string;
+  updatedAt: string;
+  lastPublishedAt: string;
+  tags: string[];
+  bookmarked: boolean;
+  collaborators?: MapperType[];
+  declaredAi: string;
+  blRanked: boolean;
+  blQualified: boolean;
+}
