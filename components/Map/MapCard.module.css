@@ -1,12 +1,13 @@
 .map {
   display: flex;
+  min-width: 0;
   border: var(--border);
   padding: 0.5rem;
   text-align: left;
-  transition: 0.1s;
 }
 
 .mapInfo {
+  min-width: 0;
   flex-grow: 1;
   padding-inline: 0.5rem;
 }
@@ -20,11 +21,30 @@
   }
 }
 
+.mapTitleWord {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mapAuthorWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
 .mapAuthor {
   font-size: 0.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .mapPublished {
+  text-wrap: nowrap;
   font-size: 0.66rem;
   color: var(--color-text-dark);
 }

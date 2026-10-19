@@ -84,6 +84,10 @@ const MapCard = ({ map }: { map: MapType }) => {
   };
 
   const newestVersion = map.versions[map.versions.length - 1];
+  const mappers = [map.uploader.name];
+  if (map.collaborators) {
+    map.collaborators.map((collaborator) => mappers.push(collaborator.name));
+  }
 
   return (
     <div
@@ -102,12 +106,18 @@ const MapCard = ({ map }: { map: MapType }) => {
 
       <div className={styles.mapInfo}>
         <Link href={`/maps/${map.id}`}>
-          <h2 className={`heading ${styles.mapTitle}`}>{map.name}</h2>
+          <h2 title={map.name} className={`heading ${styles.mapTitle}`}>
+            {map.name.split(/\s+/).map((word, i) => (
+              <span className={styles.mapTitleWord} key={`${i}${word}`}>
+                {word}{" "}
+              </span>
+            ))}
+          </h2>
         </Link>
 
-        <div>
+        <div className={styles.mapAuthorWrapper}>
           <span className={styles.mapAuthor}>
-            By <strong>{map.uploader.name} </strong>
+            By <strong title={mappers.join(", ")}>{mappers.join(", ")}</strong>
           </span>
           <span title={newestVersion.createdAt} className={styles.mapPublished}>
             {calculateTimeSince(newestVersion.createdAt)}

@@ -5,7 +5,11 @@ import type { MapType } from "../types";
 import styles from "./page.module.css";
 
 const Page = async () => {
-  const maps = await fetchData<MapType[]>("maps/latest", "", "pageSize=40");
+  const maps = await fetchData<MapType[]>(
+    "search/text",
+    "0",
+    "q=%20&pageSize=40",
+  );
 
   return (
     <div className={`container ${styles.mapsRow}`}>
