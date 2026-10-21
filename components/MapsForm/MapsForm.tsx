@@ -7,12 +7,18 @@ import searchIcon from "@/public/search.svg";
 import Form from "next/form";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "../Slider/Slider";
 import styles from "./MapsForm.module.css";
 
-const MapsForm = () => {
-  const [isAscending, setIsAscending] = useState(false);
+const MapsForm = ({ params }: { params: Record<string, string> }) => {
+  const [searchValue, setSearchValue] = useState(params.q || "");
+  const [sortValue, setSortValue] = useState(params.order || "Relevance");
+  const [isAscending, setIsAscending] = useState(
+    Boolean(params.ascending) || false,
+  );
+  const [startDate, setStartDate] = useState(params.from || "");
+  const [endDate, setEndDate] = useState(params.to || "");
 
   const router = useRouter();
   const pathName = usePathname();
@@ -31,7 +37,7 @@ const MapsForm = () => {
     const maxNPS = formData.get("max-nps") as string;
 
     if (q) params.set("q", q);
-    if (order !== "Latest") params.set("order", order);
+    if (order !== "Relevance") params.set("order", order);
     if (isAscending) params.set("ascending", String(isAscending));
     if (from) params.set("from", from);
     if (to) params.set("to", to);
@@ -41,6 +47,14 @@ const MapsForm = () => {
     router.push(params ? `${pathName}?${String(params)}` : pathName);
   };
 
+  useEffect(() => {
+    setSearchValue(params.q || "");
+    setSortValue(params.order || "Relevance");
+    setIsAscending(Boolean(params.ascending) || false);
+    setStartDate(params.from || "");
+    setEndDate(params.to || "");
+  }, [params]);
+
   return (
     <Form action={handleSubmit} className={styles.form}>
       <div className={styles.search}>
@@ -49,6 +63,8 @@ const MapsForm = () => {
           placeholder="Search for a map"
           name="search"
           aria-label="Search"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           className={styles.searchInput}
         />
 
@@ -71,6 +87,8 @@ const MapsForm = () => {
         <div className={styles.sort}>
           <select
             name="sort"
+            value={sortValue}
+            onChange={(e) => setSortValue(e.target.value)}
             style={{
               backgroundImage: `url(${arrowIcon.src})`,
             }}
@@ -111,6 +129,8 @@ const MapsForm = () => {
             placeholder="Start date"
             name="start-date"
             aria-label="Start date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
             onFocus={(e) => {
               e.target.type = "date";
               e.target.showPicker();
@@ -124,6 +144,8 @@ const MapsForm = () => {
             placeholder="End date"
             name="end-date"
             aria-label="End date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
             onFocus={(e) => {
               e.target.type = "date";
               e.target.showPicker();
@@ -133,7 +155,7 @@ const MapsForm = () => {
           />
         </div>
 
-        <Slider min={sliderMin} max={sliderMax} />
+        <Slider min={sliderMin} max={sliderMax} params={params} />
       </div>
     </Form>
   );

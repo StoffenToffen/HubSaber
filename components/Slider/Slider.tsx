@@ -1,9 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./Slider.module.css";
 
-const Slider2 = ({ min, max }: { min: number; max: number }) => {
-  const [minValue, setMinVal] = useState(min);
-  const [maxValue, setMaxVal] = useState(max);
+interface SliderProps {
+  min: number;
+  max: number;
+  params: Record<string, string>;
+}
+
+const Slider = ({ min, max, params }: SliderProps) => {
+  const [minValue, setMinValue] = useState(+params.minNPS * 10 || min);
+  const [maxValue, setMaxValue] = useState(+params.maxNPS * 10 || max);
 
   const range = useRef<HTMLDivElement>(null);
 
@@ -31,6 +37,11 @@ const Slider2 = ({ min, max }: { min: number; max: number }) => {
     }
   }, [minValue, maxValue, getPercent]);
 
+  useEffect(() => {
+    setMinValue(+params.minNPS * 10 || min);
+    setMaxValue(+params.maxNPS * 10 || max);
+  }, [params.minNPS, params.maxNPS, min, max]);
+
   return (
     <fieldset className={styles.sliderWrapper}>
       <div className={styles.slider}>
@@ -53,7 +64,7 @@ const Slider2 = ({ min, max }: { min: number; max: number }) => {
         name="min-nps"
         aria-label="min notes per second"
         onChange={(e) => {
-          setMinVal(Math.min(+e.target.value, maxValue - 1));
+          setMinValue(Math.min(+e.target.value, maxValue - 1));
         }}
         className={`${styles.thumb} ${minValue > max - 10 ? styles.thumbPriority : ""}`}
       />
@@ -66,7 +77,7 @@ const Slider2 = ({ min, max }: { min: number; max: number }) => {
         name="max-nps"
         aria-label="max notes per second"
         onChange={(e) => {
-          setMaxVal(Math.max(+e.target.value, minValue + 1));
+          setMaxValue(Math.max(+e.target.value, minValue + 1));
         }}
         className={styles.thumb}
       />
@@ -74,4 +85,4 @@ const Slider2 = ({ min, max }: { min: number; max: number }) => {
   );
 };
 
-export default Slider2;
+export default Slider;

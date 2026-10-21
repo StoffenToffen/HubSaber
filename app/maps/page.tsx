@@ -22,7 +22,7 @@ const Page = async ({ searchParams }: PageProps) => {
       <section>
         <h1 className="heading">Maps</h1>
 
-        <MapsForm />
+        <MapsForm params={params} />
       </section>
 
       <section className={styles.maps}>
