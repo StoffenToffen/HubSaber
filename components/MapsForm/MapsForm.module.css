@@ -134,7 +134,6 @@
 }
 
 .date {
-  color: var(--color-text-dark);
   background-color: var(--color-bg);
   color-scheme: dark;
   height: 2rem;
