@@ -4,11 +4,17 @@ import { fetchData } from "../featches";
 import type { MapType } from "../types";
 import styles from "./page.module.css";
 
-const Page = async () => {
+interface PageProps {
+  searchParams: Promise<Record<string, string>>;
+}
+
+const Page = async ({ searchParams }: PageProps) => {
+  const params = await searchParams;
+
   const maps = await fetchData<MapType[]>(
     "search/text",
     "0",
-    "q=%20&pageSize=40",
+    String(new URLSearchParams(params)),
   );
 
   return (
