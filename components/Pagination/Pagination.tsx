@@ -19,13 +19,16 @@ const Pagination = ({ fetchInfo, params }: PaginationProps) => {
   const handlePagination = (newPage: number) => {
     const searchParams = new URLSearchParams(params);
     searchParams.set("page", String(newPage));
+
+    if (searchParams.get("page") === "0") searchParams.delete("page");
+
     router.push(`${pathName}?${String(searchParams)}`);
   };
 
   return (
     <div className={styles.pagination}>
       <div className={styles.paginationLeft}>
-        {params.page && +params.page > 0 && (
+        {params.page && (
           <>
             <button
               type="button"
@@ -62,11 +65,11 @@ const Pagination = ({ fetchInfo, params }: PaginationProps) => {
       </span>
 
       <div className={styles.paginationRight}>
-        {+params.page + 1 < fetchInfo.pages && (
+        {(!params.page || +params.page + 1 < fetchInfo.pages) && (
           <>
             <button
               type="button"
-              onClick={() => handlePagination(+params.page + 1 || 2)}
+              onClick={() => handlePagination(+params.page + 1 || 1)}
               className={styles.paginationBtn}
             >
               <Image
