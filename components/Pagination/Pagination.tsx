@@ -1,7 +1,10 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
 import type { InfoType } from "@/app/types";
+import arrowIcon from "@/public/arrow.svg";
+import arrowEndIcon from "@/public/arrowEnd.svg";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "./Pagination.module.css";
 
 interface PaginationProps {
@@ -21,39 +24,74 @@ const Pagination = ({ fetchInfo, params }: PaginationProps) => {
 
   return (
     <div className={styles.pagination}>
-      <button
-        type="button"
-        onClick={() => handlePagination(0)}
-        className={styles.paginationBtn}
-      >
-        First page
-      </button>
-      <button
-        type="button"
-        onClick={() => handlePagination(+params.page - 1)}
-        className={styles.paginationBtn}
-      >
-        Previous page
-      </button>
+      <div className={styles.paginationLeft}>
+        {params.page && +params.page > 0 && (
+          <>
+            <button
+              type="button"
+              onClick={() => handlePagination(0)}
+              className={styles.paginationBtn}
+            >
+              <Image
+                src={arrowEndIcon}
+                alt="first page"
+                width={20}
+                className={styles.arrowLeft}
+              />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handlePagination(+params.page - 1)}
+              className={styles.paginationBtn}
+            >
+              <Image
+                src={arrowIcon}
+                alt="previous page"
+                width={20}
+                className={styles.arrowLeft}
+              />
+            </button>
+          </>
+        )}
+      </div>
 
       <span className={styles.paginationNumber}>
-        Page {+params.page + 1 || 1} of {fetchInfo.pages}
+        Page <strong>{+params.page + 1 || 1} </strong>
+        of <strong>{fetchInfo.pages}</strong>
       </span>
 
-      <button
-        type="button"
-        onClick={() => handlePagination(+params.page + 1 || 2)}
-        className={styles.paginationBtn}
-      >
-        Next page
-      </button>
-      <button
-        type="button"
-        onClick={() => handlePagination(fetchInfo.pages - 1)}
-        className={styles.paginationBtn}
-      >
-        Last page
-      </button>
+      <div className={styles.paginationRight}>
+        {+params.page + 1 < fetchInfo.pages && (
+          <>
+            <button
+              type="button"
+              onClick={() => handlePagination(+params.page + 1 || 2)}
+              className={styles.paginationBtn}
+            >
+              <Image
+                src={arrowIcon}
+                alt="next page"
+                width={20}
+                className={styles.arrowRight}
+              />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handlePagination(fetchInfo.pages - 1)}
+              className={styles.paginationBtn}
+            >
+              <Image
+                src={arrowEndIcon}
+                alt="last page"
+                width={20}
+                className={styles.arrowRight}
+              />
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 };
