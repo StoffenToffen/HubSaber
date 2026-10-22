@@ -1,0 +1,22 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.paginationBtn {
+  color: white;
+  border: var(--border);
+  padding: 0.5rem 1rem;
+  transition: 0.1s;
+
+  &:hover {
+    box-shadow: var(--shadow);
+  }
+}
+
+.paginationNumber {
+  margin: 0 auto;
+  font-size: 1.25rem;
+}

@@ -12,8 +12,7 @@ const fetchData = async <T>(
       throw new Error(`Failed to fetch ${resource}: ${response.status}`);
     }
 
-    const data = await response.json();
-    return data.docs;
+    return await response.json();
   } catch (err) {
     console.error(err);
     throw err;
