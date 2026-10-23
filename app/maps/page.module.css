@@ -14,3 +14,9 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+.resultMsg {
+  grid-column: span 2;
+  font-size: 1.25rem;
+  padding-top: 4rem;
+}

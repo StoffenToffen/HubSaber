@@ -12,11 +12,14 @@ interface PageProps {
 const Page = async ({ searchParams }: PageProps) => {
   const params = await searchParams;
 
-  const { docs: maps, info: fetchInfo } = await fetchData<FetchType>(
+  const data = await fetchData<FetchType>(
     "search/text",
     "0",
     String(new URLSearchParams(params)),
   );
+
+  const { docs: maps, info: fetchInfo } =
+    typeof data !== "string" ? data : { docs: null, info: null };
 
   return (
     <div className={`container ${styles.mapsRow}`}>
@@ -27,13 +30,23 @@ const Page = async ({ searchParams }: PageProps) => {
       </section>
 
       <section className={styles.maps}>
-        {maps.map((map) => (
-          <MapCard key={map.id} map={map} />
-        ))}
+        {maps ? (
+          maps.length ? (
+            maps.map((map) => <MapCard key={map.id} map={map} />)
+          ) : (
+            <span className={styles.resultMsg}>No results found</span>
+          )
+        ) : (
+          typeof data === "string" && (
+            <span className={`text--red ${styles.resultMsg}`}>{data}</span>
+          )
+        )}
       </section>
 
       <section>
-        <Pagination fetchInfo={fetchInfo} params={params} />
+        {maps && maps.length > 0 && (
+          <Pagination fetchInfo={fetchInfo} params={params} />
+        )}
       </section>
     </div>
   );
