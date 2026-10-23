@@ -78,12 +78,6 @@ const MapsForm = ({ params }: { params: Record<string, string> }) => {
       </div>
 
       <div className={styles.formContainer}>
-        <button type="button" className={styles.filter}>
-          <span>Filters:</span>
-
-          <Image src={arrowIcon} alt="Open filters" width={20} />
-        </button>
-
         <div className={styles.sort}>
           <select
             name="sort"

@@ -9,8 +9,6 @@ const MapsFormSkeleton = () => {
       </div>
 
       <div className={styles.formContainer}>
-        <Skeleton width={"100%"} height={40} />
-
         <div className={styles.sort}>
           <Skeleton width={"100%"} height={40} />
         </div>
