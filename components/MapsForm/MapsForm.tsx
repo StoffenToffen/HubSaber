@@ -26,7 +26,10 @@ const MapsForm = ({ params }: { params: Record<string, string> }) => {
   const sliderMin = 0;
   const sliderMax = 160;
 
-  const handleSubmit = (formData: FormData) => {
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
     const params = new URLSearchParams();
 
     const q = (formData.get("search") as string).trim();
@@ -56,7 +59,7 @@ const MapsForm = ({ params }: { params: Record<string, string> }) => {
   }, [params]);
 
   return (
-    <Form action={handleSubmit} className={styles.form}>
+    <Form action="" onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.search}>
         <input
           type="search"
