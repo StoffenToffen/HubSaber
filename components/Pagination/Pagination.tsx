@@ -65,7 +65,8 @@ const Pagination = ({ fetchInfo, params }: PaginationProps) => {
       </span>
 
       <div className={styles.paginationRight}>
-        {(!params.page || +params.page + 1 < fetchInfo.pages) && (
+        {((!params.page && fetchInfo.pages > 1) ||
+          +params.page + 1 < fetchInfo.pages) && (
           <>
             <button
               type="button"

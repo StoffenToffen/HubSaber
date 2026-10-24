@@ -29,20 +29,20 @@ const MapsForm = ({ params }: { params: Record<string, string> }) => {
   const handleSubmit = (formData: FormData) => {
     const params = new URLSearchParams();
 
-    const q = encodeURIComponent((formData.get("search") as string).trim());
+    const q = (formData.get("search") as string).trim();
     const order = formData.get("sort") as string;
     const from = formData.get("start-date") as string;
     const to = formData.get("end-date") as string;
-    const minNPS = formData.get("min-nps") as string;
-    const maxNPS = formData.get("max-nps") as string;
+    const minNps = formData.get("min-nps") as string;
+    const maxNps = formData.get("max-nps") as string;
 
     if (q) params.set("q", q);
     if (order !== "Relevance") params.set("order", order);
     if (isAscending) params.set("ascending", String(isAscending));
     if (from) params.set("from", from);
     if (to) params.set("to", to);
-    if (+minNPS > sliderMin) params.set("minNPS", String(+minNPS / 10));
-    if (+maxNPS < sliderMax) params.set("maxNPS", String(+maxNPS / 10));
+    if (+minNps > sliderMin) params.set("minNps", String(+minNps / 10));
+    if (+maxNps < sliderMax) params.set("maxNps", String(+maxNps / 10));
 
     router.push(params ? `${pathName}?${String(params)}` : pathName);
   };

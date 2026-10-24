@@ -14,7 +14,7 @@ const Page = async ({ searchParams }: PageProps) => {
 
   const data = await fetchData<FetchType>(
     "search/text",
-    "0",
+    params.page ? String(params.page) : "0",
     String(new URLSearchParams(params)),
   );
 

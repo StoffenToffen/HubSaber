@@ -8,8 +8,8 @@ interface SliderProps {
 }
 
 const Slider = ({ min, max, params }: SliderProps) => {
-  const [minValue, setMinValue] = useState(+params.minNPS * 10 || min);
-  const [maxValue, setMaxValue] = useState(+params.maxNPS * 10 || max);
+  const [minValue, setMinValue] = useState(+params.minNps * 10 || min);
+  const [maxValue, setMaxValue] = useState(+params.maxNps * 10 || max);
 
   const range = useRef<HTMLDivElement>(null);
 
@@ -38,9 +38,9 @@ const Slider = ({ min, max, params }: SliderProps) => {
   }, [minValue, maxValue, getPercent]);
 
   useEffect(() => {
-    setMinValue(+params.minNPS * 10 || min);
-    setMaxValue(+params.maxNPS * 10 || max);
-  }, [params.minNPS, params.maxNPS, min, max]);
+    setMinValue(+params.minNps * 10 || min);
+    setMaxValue(+params.maxNps * 10 || max);
+  }, [params.minNps, params.maxNps, min, max]);
 
   return (
     <fieldset className={styles.sliderWrapper}>
