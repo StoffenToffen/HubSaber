@@ -1,0 +1,45 @@
+.pagination {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.paginationLeft {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+
+.paginationRight {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.paginationBtn {
+  display: flex;
+  align-items: center;
+  color: white;
+  border: var(--border);
+  padding: 0.5rem;
+  aspect-ratio: 1;
+  transition: 0.1s;
+
+  &:hover {
+    box-shadow: var(--shadow);
+  }
+}
+
+.paginationNumber {
+  margin: 0 auto;
+}
+
+.arrowLeft {
+  rotate: 90deg;
+}
+
+.arrowRight {
+  rotate: -90deg;
+}

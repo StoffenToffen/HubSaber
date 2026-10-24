@@ -79,3 +79,14 @@ export interface MapType {
   blRanked: boolean;
   blQualified: boolean;
 }
+
+export interface InfoType {
+  total: number;
+  pages: number;
+  duration: number;
+}
+
+export interface FetchType {
+  docs: MapType[];
+  info: InfoType;
+}

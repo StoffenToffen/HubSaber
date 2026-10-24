@@ -119,8 +119,8 @@ const MapCard = ({ map }: { map: MapType }) => {
           <span className={styles.mapAuthor}>
             By <strong title={mappers.join(", ")}>{mappers.join(", ")}</strong>
           </span>
-          <span title={newestVersion.createdAt} className={styles.mapPublished}>
-            {calculateTimeSince(newestVersion.createdAt)}
+          <span title={map.uploaded} className={styles.mapPublished}>
+            {calculateTimeSince(map.uploaded)}
           </span>
         </div>
 
