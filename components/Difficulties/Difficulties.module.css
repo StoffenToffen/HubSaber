@@ -1,0 +1,135 @@
+.diffs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.diff {
+  color: white;
+  background-color: var(--color-bg);
+  border: var(--border);
+  text-align: start;
+  transition: 0.1s;
+
+  &:hover {
+    box-shadow: var(--shadow);
+  }
+}
+
+/* Head */
+
+.diffHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.diffTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.diffIcon {
+  transition: 0.2s;
+}
+
+.rotated {
+  rotate: -180deg;
+}
+
+.diffStats {
+  color: var(--color-text-dark);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.diffStat {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.diffStatIcon {
+  filter: brightness(0) invert(95%) sepia(0%) saturate(788%) hue-rotate(158deg)
+    brightness(91%) contrast(97%);
+}
+
+@media screen and (min-width: 550px) {
+  .diffHead {
+    flex-wrap: nowrap;
+    gap: 2rem;
+  }
+
+  .diffIcon {
+    order: 1;
+  }
+
+  .diffStats {
+    justify-content: start;
+    gap: 1rem;
+  }
+}
+
+/* Content */
+
+.diffContentWrapper {
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: 0fr;
+  min-width: 0;
+  transition: 0.2s;
+}
+
+.expanded {
+  grid-template-rows: 1fr;
+}
+
+.diffContent {
+  text-align: left;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.scoresRow {
+  & > * + * {
+    padding-left: 0.5rem;
+  }
+
+  & > :first-child {
+    padding-left: 1rem;
+  }
+
+  & > :last-child {
+    padding-right: 1rem;
+  }
+}
+
+.scoresRowOdd {
+  padding-inline: 1rem;
+  background-color: var(--color-bg-light);
+}
+
+.scoresColumn {
+  color: var(--color-text-dark);
+  white-space: nowrap;
+}
+
+.scoresColumnPlayer {
+  color: var(--color-text-dark);
+  padding-block: 0.5rem;
+  width: 50%;
+  max-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
