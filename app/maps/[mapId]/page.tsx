@@ -1,4 +1,5 @@
 import { fetchData } from "@/app/featches";
+import { calculateTimeSince, formatSec } from "@/app/globalFunctions";
 import type { MapType } from "@/app/types";
 import Difficulties from "@/components/Difficulties/Difficulties";
 import clockIcon from "@/public/clock.svg";
@@ -20,31 +21,6 @@ const Page = async ({ params }: { params: Promise<{ mapId: string }> }) => {
       </div>
     );
   }
-
-  const calculateTimeSince = (dateTime: string): string => {
-    const createTime = new Date(dateTime).getTime();
-    const currentTime = Date.now();
-
-    const timeDifferenceMs = currentTime - createTime;
-
-    const minutes = Math.floor(timeDifferenceMs / (1000 * 60));
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
-    const months = Math.floor(days / 30);
-    const years = Math.floor(days / 365);
-
-    if (years > 0) return `${years}y ago`;
-    else if (months > 0) return `${months}m ago`;
-    else if (days > 0) return `${days}d ago`;
-    else if (hours > 0) return `${hours}h ago`;
-    return "just now";
-  };
-
-  const formatSec = (sec: number) => {
-    const minutes = Math.floor(sec / 60);
-    const seconds = String(sec % 60).padStart(2, "0");
-    return `${minutes}:${seconds}`;
-  };
 
   const getRequirements = () => {
     const diffs = map.versions[map.versions.length - 1].diffs;

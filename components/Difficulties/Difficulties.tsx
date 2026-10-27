@@ -1,18 +1,10 @@
 "use client";
 
+import { formatDiff, getDiffIcon } from "@/app/globalFunctions";
 import type { DiffType, MapType } from "@/app/types";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./Difficulties.module.css";
-
-import threeSixtyDegree from "@/public/diffIcons/360-degree.svg";
-import ninetyDegree from "@/public/diffIcons/90-degree.svg";
-import lawless from "@/public/diffIcons/lawless.svg";
-import legacy from "@/public/diffIcons/legacy.svg";
-import lightShow from "@/public/diffIcons/light-show.svg";
-import noArrows from "@/public/diffIcons/no-arrows.svg";
-import oneSaber from "@/public/diffIcons/one-saber.svg";
-import standard from "@/public/diffIcons/standard.svg";
 
 import arrowIcon from "@/public/arrow.svg";
 import bombIcon from "@/public/bomb.svg";
@@ -25,34 +17,8 @@ import wallIcon from "@/public/wall.svg";
 const Difficulties = ({ map }: { map: MapType }) => {
   const [expanded, setExpanded] = useState(0);
 
-  const formatDiff = (diff: string) => {
-    if (diff === "ExpertPlus") return "Expert+";
-    else return diff;
-  };
-
-  const getDiffIcon = (diff: string) => {
-    switch (diff) {
-      case "Standard":
-        return standard;
-      case "OneSaber":
-        return oneSaber;
-      case "NoArrows":
-        return noArrows;
-      case "90Degree":
-        return ninetyDegree;
-      case "360Degree":
-        return threeSixtyDegree;
-      case "Lightshow":
-        return lightShow;
-      case "Lawless":
-        return lawless;
-      default:
-        return legacy;
-    }
-  };
-
   const formatStat = (stat: number) => {
-    if (stat > 999) return `${Math.floor(stat / 1000)}k`;
+    if (stat > 999) return `${(stat / 1000).toFixed(1)}k`;
     if (stat % 1 !== 0) return stat.toFixed(1);
     else return stat;
   };
