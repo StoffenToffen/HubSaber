@@ -10,6 +10,33 @@ interface MapperType {
   playlistUrl: string;
 }
 
+export interface DiffType {
+  njs: number;
+  offset: number;
+  notes: number;
+  bombs: number;
+  obstacles: number;
+  nps: number;
+  length: number;
+  characteristic: string;
+  difficulty: string;
+  events: number;
+  chroma: boolean;
+  me: boolean;
+  ne: boolean;
+  cinema: boolean;
+  vivify?: boolean;
+  seconds: number;
+  paritySummary: {
+    errors: number;
+    warns: number;
+    resets: number;
+  };
+  maxScore: number;
+  label: string;
+  environment: string;
+}
+
 export interface MapType {
   id: string;
   name: string;
@@ -39,31 +66,7 @@ export interface MapType {
     state: string;
     createdAt: string;
     sageScore: number;
-    diffs: {
-      njs: number;
-      offset: number;
-      notes: number;
-      bombs: number;
-      obstacles: number;
-      nps: number;
-      length: number;
-      characteristic: string;
-      difficulty: string;
-      events: number;
-      chroma: boolean;
-      me: boolean;
-      ne: boolean;
-      cinema: boolean;
-      seconds: number;
-      paritySummary: {
-        errors: number;
-        warns: number;
-        resets: number;
-      };
-      maxScore: number;
-      label: string;
-      environment: string;
-    }[];
+    diffs: DiffType[];
     downloadURL: string;
     coverURL: string;
     previewURL: string;
@@ -72,7 +75,7 @@ export interface MapType {
   createdAt: string;
   updatedAt: string;
   lastPublishedAt: string;
-  tags: string[];
+  tags?: string[];
   bookmarked: boolean;
   collaborators?: MapperType[];
   declaredAi: string;

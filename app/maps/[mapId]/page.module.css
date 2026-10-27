@@ -2,6 +2,14 @@
   padding-top: 5rem;
 }
 
+.errorMsg {
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
 .mapInfo {
   background-color: var(--color-bg);
   border: var(--border);
@@ -51,6 +59,24 @@
   rotate: 180deg;
 }
 
+.mapTagGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mapTagGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mapTagsTitle {
+  color: var(--color-text-dark);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
 .mapTags {
   display: flex;
   flex-wrap: wrap;
@@ -68,4 +94,5 @@
   color: var(--color-text-dark);
   padding-top: 1rem;
   font-weight: 300;
+  white-space: pre-line;
 }
