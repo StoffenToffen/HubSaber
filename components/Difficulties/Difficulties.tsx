@@ -65,7 +65,7 @@ const Difficulties = ({ map, ssLeaderboards }: DifficultiesProps) => {
   };
 
   return (
-    <section className={styles.diffs}>
+    <>
       {map.versions[map.versions.length - 1].diffs.map((diff, i) => (
         <button
           type="button"
@@ -123,7 +123,7 @@ const Difficulties = ({ map, ssLeaderboards }: DifficultiesProps) => {
           </div>
         </button>
       ))}
-    </section>
+    </>
   );
 };
 

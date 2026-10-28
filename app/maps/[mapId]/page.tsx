@@ -176,7 +176,9 @@ const Page = async ({ params }: { params: Promise<{ mapId: string }> }) => {
         </div>
       </section>
 
-      <Difficulties map={map} ssLeaderboards={ssLeaderboards} />
+      <section className={styles.diffs}>
+        <Difficulties map={map} ssLeaderboards={ssLeaderboards} />
+      </section>
     </div>
   );
 };

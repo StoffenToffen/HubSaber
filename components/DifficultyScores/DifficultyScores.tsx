@@ -54,7 +54,7 @@ const DifficultyScores = ({ ssLeaderboards, index }: DifficultyScoresProps) => {
                 <td className={styles.scoresColumn}>{score.pp.toFixed(2)}</td>
               </tr>
             ))
-          : ""}
+          : null}
       </tbody>
     </table>
   );
