@@ -1,16 +1,12 @@
 import type { ssLeaderboardType } from "@/app/types";
-import { use } from "react";
 import styles from "./DifficultyScores.module.css";
 
 interface DifficultyScoresProps {
-  ssLeaderboards: Promise<(string | ssLeaderboardType)[]>;
-  index: number;
+  leaderboard: string | ssLeaderboardType;
 }
 
-const DifficultyScores = ({ ssLeaderboards, index }: DifficultyScoresProps) => {
-  const leaderboards = use(ssLeaderboards);
-
-  if (leaderboards.some((item) => typeof item === "string")) {
+const DifficultyScores = ({ leaderboard }: DifficultyScoresProps) => {
+  if (typeof leaderboard === "string") {
     return (
       <div className={styles.errorMsg}>
         <span>Failed to get scores</span>
@@ -18,10 +14,6 @@ const DifficultyScores = ({ ssLeaderboards, index }: DifficultyScoresProps) => {
       </div>
     );
   }
-
-  const validLeaderboards = leaderboards.filter(
-    (item) => typeof item !== "string",
-  );
 
   return (
     <table cellSpacing={0} className={styles.diffContent}>
@@ -35,8 +27,8 @@ const DifficultyScores = ({ ssLeaderboards, index }: DifficultyScoresProps) => {
         </tr>
       </thead>
       <tbody>
-        {validLeaderboards[index]
-          ? validLeaderboards[index].data.map((score, i) => (
+        {leaderboard
+          ? leaderboard.data.map((score, i) => (
               <tr
                 key={score.id}
                 className={`${styles.scoresRow} ${i % 2 === 1 ? styles.scoresRowOdd : ""}`}

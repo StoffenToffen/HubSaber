@@ -3,7 +3,7 @@
 import { formatDiff, getDiffIcon } from "@/app/globalFunctions";
 import type { DiffType, MapType, ssLeaderboardType } from "@/app/types";
 import Image from "next/image";
-import { useState } from "react";
+import { use, useState } from "react";
 import styles from "./Difficulties.module.css";
 
 import arrowIcon from "@/public/arrow.svg";
@@ -17,11 +17,13 @@ import DifficultyScores from "../DifficultyScores/DifficultyScores";
 
 interface DifficultiesProps {
   map: MapType;
-  ssLeaderboards: Promise<(string | ssLeaderboardType)[]>;
+  ssLeaderboards: Promise<string | (string | ssLeaderboardType)[]>;
 }
 
 const Difficulties = ({ map, ssLeaderboards }: DifficultiesProps) => {
   const [expanded, setExpanded] = useState(0);
+
+  const leaderboards = use(ssLeaderboards);
 
   const formatStat = (stat: number) => {
     if (stat > 999) return `${(stat / 1000).toFixed(1)}k`;
@@ -119,7 +121,13 @@ const Difficulties = ({ map, ssLeaderboards }: DifficultiesProps) => {
             className={`${styles.diffContentWrapper} ${expanded === i ? styles.expanded : ""}`}
             id={`panel${i}-content`}
           >
-            <DifficultyScores ssLeaderboards={ssLeaderboards} index={i} />
+            <DifficultyScores
+              leaderboard={
+                typeof leaderboards === "string"
+                  ? leaderboards
+                  : leaderboards[i]
+              }
+            />
           </div>
         </button>
       ))}

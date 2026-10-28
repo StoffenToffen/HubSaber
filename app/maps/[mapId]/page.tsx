@@ -27,23 +27,17 @@ const Page = async ({ params }: { params: Promise<{ mapId: string }> }) => {
     map.versions[map.versions.length - 1].hash,
   );
 
-  if (typeof ssDiffsInfo === "string") {
-    return (
-      <div className={`container ${styles.errorMsg}`}>
-        <span>Failed to get scores</span>
-        <span>Please try again later</span>
-      </div>
-    );
-  }
-
-  const ssLeaderboards = Promise.all(
-    ssDiffsInfo.map((ssDiffInfo) =>
-      fetchDataSS<ssLeaderboardType>(
-        "/leaderboards",
-        `${String(ssDiffInfo.id)}/scores`,
-      ),
-    ),
-  );
+  const ssLeaderboards =
+    typeof ssDiffsInfo === "string"
+      ? Promise.resolve(ssDiffsInfo)
+      : Promise.all(
+          ssDiffsInfo.map((ssDiffInfo) =>
+            fetchDataSS<ssLeaderboardType>(
+              "/leaderboards",
+              `${String(ssDiffInfo.id)}/scores`,
+            ),
+          ),
+        );
 
   const getRequirements = () => {
     const diffs = map.versions[map.versions.length - 1].diffs;
