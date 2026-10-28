@@ -68,6 +68,7 @@ const Page = async ({ params }: { params: Promise<{ mapId: string }> }) => {
             alt={map.name}
             width={100}
             height={100}
+            className={styles.mapCover}
           />
 
           <div>

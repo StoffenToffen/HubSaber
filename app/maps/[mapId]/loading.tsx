@@ -6,7 +6,9 @@ const Loading = () => {
     <div className={`container ${styles.mapRow}`}>
       <section className={styles.mapInfo}>
         <div className={styles.mapInfoTop}>
-          <Skeleton width={100} height={100} />
+          <div className={styles.mapCover}>
+            <Skeleton width={"100%"} height={"100%"} />
+          </div>
 
           <div>
             <div>

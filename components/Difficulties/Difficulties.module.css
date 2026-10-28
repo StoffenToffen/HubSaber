@@ -26,6 +26,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  width: 6rem;
+  flex-shrink: 0;
   font-size: 1rem;
   font-weight: 500;
 }
@@ -60,7 +62,6 @@
 @media screen and (min-width: 550px) {
   .diffHead {
     flex-wrap: nowrap;
-    gap: 2rem;
   }
 
   .diffIcon {
