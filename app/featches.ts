@@ -14,4 +14,20 @@ const fetchData = async <T>(
   return await response.json();
 };
 
-export { fetchData };
+const fetchDataSS = async <T>(
+  resource: string,
+  id?: string,
+  params?: string,
+): Promise<T | string> => {
+  const response = await fetch(
+    `https://scoresaber.com/api/v2/${resource}${id ? `/${id}` : ""}${params ? `?${params}` : ""}`,
+  );
+
+  if (!response.ok) {
+    return `Something went wrong. Try again later: ${response.status}`;
+  }
+
+  return await response.json();
+};
+
+export { fetchData, fetchDataSS };

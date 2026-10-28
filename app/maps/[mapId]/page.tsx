@@ -1,6 +1,6 @@
-import { fetchData } from "@/app/featches";
+import { fetchData, fetchDataSS } from "@/app/featches";
 import { calculateTimeSince, formatSec } from "@/app/globalFunctions";
-import type { MapType } from "@/app/types";
+import type { MapType, ssDiffInfoType, ssLeaderboardType } from "@/app/types";
 import Difficulties from "@/components/Difficulties/Difficulties";
 import clockIcon from "@/public/clock.svg";
 import likeIcon from "@/public/like.svg";
@@ -21,6 +21,29 @@ const Page = async ({ params }: { params: Promise<{ mapId: string }> }) => {
       </div>
     );
   }
+
+  const ssDiffsInfo = await fetchDataSS<ssDiffInfoType[]>(
+    "leaderboards/hash",
+    map.versions[map.versions.length - 1].hash,
+  );
+
+  if (typeof ssDiffsInfo === "string") {
+    return (
+      <div className={`container ${styles.errorMsg}`}>
+        <span>Failed to get scores</span>
+        <span>Please try again later</span>
+      </div>
+    );
+  }
+
+  const ssLeaderboards = Promise.all(
+    ssDiffsInfo.map((ssDiffInfo) =>
+      fetchDataSS<ssLeaderboardType>(
+        "/leaderboards",
+        `${String(ssDiffInfo.id)}/scores`,
+      ),
+    ),
+  );
 
   const getRequirements = () => {
     const diffs = map.versions[map.versions.length - 1].diffs;
@@ -154,7 +177,7 @@ const Page = async ({ params }: { params: Promise<{ mapId: string }> }) => {
         </div>
       </section>
 
-      <Difficulties map={map} />
+      <Difficulties map={map} ssLeaderboards={ssLeaderboards} />
     </div>
   );
 };

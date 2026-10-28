@@ -1,3 +1,5 @@
+// Beat Saver
+
 interface MapperType {
   id: number;
   name: string;
@@ -92,4 +94,62 @@ export interface InfoType {
 export interface FetchType {
   docs: MapType[];
   info: InfoType;
+}
+
+// Score Saber
+
+export interface ssDiffInfoType {
+  id: number;
+  difficulty: number;
+  rawDifficulty: string;
+  gameMode: string;
+}
+
+export interface ssLeaderboardType {
+  data: [
+    {
+      id: number;
+      rank: number;
+      unmodifiedScore: number;
+      modifiedScore: number;
+      accuracy: number;
+      pp: number;
+      weight: number;
+      mods: string[];
+      badCuts: number;
+      missedNotes: number;
+      maxCombo: number;
+      fullCombo: boolean;
+      hasReplay: boolean;
+      replayViewCount: number;
+      personalBest: boolean;
+      legacyHmdId: string | null;
+      version: string | null;
+      playOutcome: string;
+      playOutcomeTime: string | null;
+      createdAt: string;
+      hasHistory: boolean;
+      player: {
+        id: string;
+        name: string;
+        playerNameInGame: string;
+        country: string;
+        role: string | null;
+        avatar: string;
+        avatarVersion: number;
+        permissions: number;
+      };
+      device: {
+        hmd: string | null;
+        controllerLeft: string | null;
+        controllerRight: string | null;
+      };
+    },
+  ];
+  metadata: {
+    page: number;
+    itemsPerPage: number;
+    totalItems: number;
+    totalPages: number;
+  };
 }
