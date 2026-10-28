@@ -80,8 +80,7 @@ const Page = async ({ params }: { params: Promise<{ mapId: string }> }) => {
             <h1 className={styles.mapTitle}>{map.name}</h1>
 
             <div className={styles.mapAuthor}>
-              By{" "}
-              <strong title={mappers.join(", ")}>{mappers.join(", ")}</strong>
+              By <strong>{mappers.join(", ")}</strong>
             </div>
 
             <div title={map.uploaded} className={styles.mapPublished}>

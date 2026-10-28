@@ -3,7 +3,7 @@
 import { formatDiff, getDiffIcon } from "@/app/globalFunctions";
 import type { DiffType, MapType, ssLeaderboardType } from "@/app/types";
 import Image from "next/image";
-import { use, useState } from "react";
+import { useState } from "react";
 import styles from "./Difficulties.module.css";
 
 import arrowIcon from "@/public/arrow.svg";
@@ -13,6 +13,7 @@ import noteIcon from "@/public/note.svg";
 import npsIcon from "@/public/notes-per-second.svg";
 import njsIcon from "@/public/speedometer.svg";
 import wallIcon from "@/public/wall.svg";
+import DifficultyScores from "../DifficultyScores/DifficultyScores";
 
 interface DifficultiesProps {
   map: MapType;
@@ -21,21 +22,6 @@ interface DifficultiesProps {
 
 const Difficulties = ({ map, ssLeaderboards }: DifficultiesProps) => {
   const [expanded, setExpanded] = useState(0);
-
-  const leaderboards = use(ssLeaderboards);
-
-  if (leaderboards.some((item) => typeof item === "string")) {
-    return (
-      <div className={`container ${styles.errorMsg}`}>
-        <span>Failed to get scores</span>
-        <span>Please try again later</span>
-      </div>
-    );
-  }
-
-  const validLeaderboards = leaderboards.filter(
-    (item) => typeof item !== "string",
-  );
 
   const formatStat = (stat: number) => {
     if (stat > 999) return `${(stat / 1000).toFixed(1)}k`;
@@ -133,41 +119,7 @@ const Difficulties = ({ map, ssLeaderboards }: DifficultiesProps) => {
             className={`${styles.diffContentWrapper} ${expanded === i ? styles.expanded : ""}`}
             id={`panel${i}-content`}
           >
-            <table cellSpacing={0} className={styles.diffContent}>
-              <thead>
-                <tr className={styles.scoresRow}>
-                  <th scope="col">#</th>
-                  <th scope="col">Player</th>
-                  <th scope="col">Score</th>
-                  <th scope="col">Acc</th>
-                  <th scope="col">PP</th>
-                </tr>
-              </thead>
-              <tbody>
-                {validLeaderboards[i]
-                  ? validLeaderboards[i].data.map((score, i) => (
-                      <tr
-                        key={score.id}
-                        className={`${styles.scoresRow} ${i % 2 === 1 ? styles.scoresRowOdd : ""}`}
-                      >
-                        <td className={styles.scoresColumn}>{i + 1}</td>
-                        <td className={styles.scoresColumnPlayer}>
-                          {score.player.name}
-                        </td>
-                        <td className={styles.scoresColumn}>
-                          {score.modifiedScore}
-                        </td>
-                        <td className={styles.scoresColumn}>
-                          {(score.accuracy * 100).toFixed(2)}%
-                        </td>
-                        <td className={styles.scoresColumn}>
-                          {score.pp.toFixed(2)}
-                        </td>
-                      </tr>
-                    ))
-                  : ""}
-              </tbody>
-            </table>
+            <DifficultyScores ssLeaderboards={ssLeaderboards} index={i} />
           </div>
         </button>
       ))}
