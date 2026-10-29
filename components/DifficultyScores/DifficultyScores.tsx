@@ -35,26 +35,22 @@ const DifficultyScores = ({ leaderboard }: DifficultyScoresProps) => {
         </tr>
       </thead>
       <tbody>
-        {leaderboard
-          ? leaderboard.data.map((score, i) => (
-              <tr
-                key={score.id}
-                className={`${styles.scoresRow} ${i % 2 === 1 ? styles.scoresRowOdd : ""}`}
-              >
-                <td className={styles.scoresColumn}>{i + 1}</td>
-                <td className={styles.scoresColumnPlayer}>
-                  {score.player.name}
-                </td>
-                <td className={styles.scoresColumn}>
-                  {score.modifiedScore.toLocaleString()}
-                </td>
-                <td className={styles.scoresColumn}>
-                  {(score.accuracy * 100).toFixed(2)}%
-                </td>
-                <td className={styles.scoresColumn}>{score.pp.toFixed(2)}</td>
-              </tr>
-            ))
-          : null}
+        {leaderboard.data.map((score, i) => (
+          <tr
+            key={score.id}
+            className={`${styles.scoresRow} ${i % 2 === 1 ? styles.scoresRowOdd : ""}`}
+          >
+            <td className={styles.scoresColumn}>{i + 1}</td>
+            <td className={styles.scoresColumnPlayer}>{score.player.name}</td>
+            <td className={styles.scoresColumn}>
+              {score.modifiedScore.toLocaleString()}
+            </td>
+            <td className={styles.scoresColumn}>
+              {(score.accuracy * 100).toFixed(2)}%
+            </td>
+            <td className={styles.scoresColumn}>{score.pp.toFixed(2)}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
