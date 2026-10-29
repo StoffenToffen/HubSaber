@@ -83,6 +83,7 @@ const Page = async ({ params }: { params: Promise<{ mapId: string }> }) => {
       <section className={styles.mapInfo}>
         <div className={styles.mapInfoTop}>
           <Image
+            loading="eager"
             src={map.versions[0].coverURL}
             alt={map.name}
             width={100}
