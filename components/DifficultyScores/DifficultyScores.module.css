@@ -6,6 +6,10 @@
   overflow: hidden;
 }
 
+.errorMsgBottom {
+  padding-bottom: 1rem;
+}
+
 .diffContent {
   text-align: left;
   overflow: hidden;

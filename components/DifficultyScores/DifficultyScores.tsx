@@ -10,7 +10,7 @@ const DifficultyScores = ({ leaderboard }: DifficultyScoresProps) => {
     return (
       <div className={styles.errorMsg}>
         <span>Failed to get scores</span>
-        <span>Please try again later</span>
+        <span className={styles.errorMsgBottom}>Please try again later</span>
       </div>
     );
   }
@@ -18,7 +18,7 @@ const DifficultyScores = ({ leaderboard }: DifficultyScoresProps) => {
   if (!leaderboard) {
     return (
       <div className={styles.errorMsg}>
-        <span>No scores submitted yet</span>
+        <span className={styles.errorMsgBottom}>No scores submitted yet</span>
       </div>
     );
   }
