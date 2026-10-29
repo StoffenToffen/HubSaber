@@ -17,7 +17,7 @@ import DifficultyScores from "../DifficultyScores/DifficultyScores";
 
 interface DifficultiesProps {
   map: MapType;
-  ssLeaderboards: Promise<string | (string | ssLeaderboardType)[]>;
+  ssLeaderboards: Promise<string | (string | ssLeaderboardType | null)[]>;
 }
 
 const Difficulties = ({ map, ssLeaderboards }: DifficultiesProps) => {

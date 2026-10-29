@@ -2,7 +2,7 @@ import type { ssLeaderboardType } from "@/app/types";
 import styles from "./DifficultyScores.module.css";
 
 interface DifficultyScoresProps {
-  leaderboard: string | ssLeaderboardType;
+  leaderboard: string | ssLeaderboardType | null;
 }
 
 const DifficultyScores = ({ leaderboard }: DifficultyScoresProps) => {
@@ -11,6 +11,14 @@ const DifficultyScores = ({ leaderboard }: DifficultyScoresProps) => {
       <div className={styles.errorMsg}>
         <span>Failed to get scores</span>
         <span>Please try again later</span>
+      </div>
+    );
+  }
+
+  if (!leaderboard) {
+    return (
+      <div className={styles.errorMsg}>
+        <span>No scores submitted yet</span>
       </div>
     );
   }

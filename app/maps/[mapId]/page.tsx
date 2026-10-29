@@ -27,16 +27,35 @@ const Page = async ({ params }: { params: Promise<{ mapId: string }> }) => {
     map.versions[map.versions.length - 1].hash,
   );
 
+  const ssGameModes: Record<string, string> = {
+    Standard: "SoloStandard",
+    OneSaber: "SoloOneSaber",
+    NoArrows: "SoloNoArrows",
+    "90Degree": "Solo90Degree",
+    "360Degree": "Solo360Degree",
+    Lawless: "SoloLawless",
+    Legacy: "SoloLegacy",
+    Lightshow: "",
+  };
+
   const ssLeaderboards =
     typeof ssDiffsInfo === "string"
       ? Promise.resolve(ssDiffsInfo)
       : Promise.all(
-          ssDiffsInfo.map((ssDiffInfo) =>
-            fetchDataSS<ssLeaderboardType>(
+          map.versions[map.versions.length - 1].diffs.map((diff) => {
+            const matchingSsDiff = ssDiffsInfo.find(
+              (ssDiff) =>
+                ssDiff.rawDifficulty ===
+                `_${diff.difficulty}_${ssGameModes[diff.characteristic]}`,
+            );
+
+            if (!matchingSsDiff) return null;
+
+            return fetchDataSS<ssLeaderboardType>(
               "/leaderboards",
-              `${String(ssDiffInfo.id)}/scores`,
-            ),
-          ),
+              `${matchingSsDiff.id}/scores`,
+            );
+          }),
         );
 
   const getRequirements = () => {
