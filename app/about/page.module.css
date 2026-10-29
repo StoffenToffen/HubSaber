@@ -1,0 +1,62 @@
+.aboutRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.headerTxt {
+  max-width: 20rem;
+  font-weight: 300;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--color-bg);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 300;
+  font-size: 0.875rem;
+  max-width: 30rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.cardHighlight {
+  background-color: var(--color-bg-light);
+  padding: 0.5rem;
+  font-weight: 400;
+}
+
+.cardHighlightAlt {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.cardLink {
+  color: var(--color-accent);
+  text-decoration: underline;
+  transition: 0.1s;
+
+  &:hover {
+    color: white;
+  }
+}
