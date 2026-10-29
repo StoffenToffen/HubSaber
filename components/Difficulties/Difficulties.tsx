@@ -69,53 +69,57 @@ const Difficulties = ({ map, ssLeaderboards }: DifficultiesProps) => {
   return (
     <>
       {map.versions[map.versions.length - 1].diffs.map((diff, i) => (
-        <button
-          type="button"
+        <div
           key={`${diff.characteristic} ${diff.difficulty}`}
-          aria-expanded={expanded === i}
-          aria-controls={`panel${i}-content`}
-          onClick={() => {
-            setExpanded(expanded === i ? -1 : i);
-          }}
           className={styles.diff}
         >
-          <div className={styles.diffHead}>
-            <h2 className={styles.diffTitle}>
+          <button
+            type="button"
+            aria-expanded={expanded === i}
+            aria-controls={`panel${i}-content`}
+            onClick={() => {
+              setExpanded(expanded === i ? -1 : i);
+            }}
+            className={styles.diffBtn}
+          >
+            <div className={styles.diffHead}>
+              <h2 className={styles.diffTitle}>
+                <Image
+                  src={getDiffIcon(diff.characteristic)}
+                  alt={diff.characteristic}
+                  title={diff.characteristic}
+                  width={16}
+                />
+                {formatDiff(diff.difficulty)}
+              </h2>
+
               <Image
-                src={getDiffIcon(diff.characteristic)}
-                alt={diff.characteristic}
-                title={diff.characteristic}
-                width={16}
+                src={arrowIcon}
+                alt="expand difficulty"
+                width={20}
+                className={`${styles.diffIcon} ${expanded === i ? styles.rotated : ""}`}
               />
-              {formatDiff(diff.difficulty)}
-            </h2>
 
-            <Image
-              src={arrowIcon}
-              alt="expand difficulty"
-              width={20}
-              className={`${styles.diffIcon} ${expanded === i ? styles.rotated : ""}`}
-            />
-
-            <div className={styles.diffStats}>
-              {getDiffStats(diff).map((stat) => (
-                <div
-                  key={stat.name}
-                  title={`${stat.name}: ${stat.value}`}
-                  className={styles.diffStat}
-                >
-                  <Image
-                    src={stat.icon}
-                    alt={stat.name}
-                    width={14}
-                    height={14}
-                    className={styles.diffStatIcon}
-                  />
-                  <span>{formatStat(stat.value)}</span>
-                </div>
-              ))}
+              <div className={styles.diffStats}>
+                {getDiffStats(diff).map((stat) => (
+                  <div
+                    key={stat.name}
+                    title={`${stat.name}: ${stat.value}`}
+                    className={styles.diffStat}
+                  >
+                    <Image
+                      src={stat.icon}
+                      alt={stat.name}
+                      width={14}
+                      height={14}
+                      className={styles.diffStatIcon}
+                    />
+                    <span>{formatStat(stat.value)}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </button>
 
           <div
             className={`${styles.diffContentWrapper} ${expanded === i ? styles.expanded : ""}`}
@@ -129,7 +133,7 @@ const Difficulties = ({ map, ssLeaderboards }: DifficultiesProps) => {
               }
             />
           </div>
-        </button>
+        </div>
       ))}
     </>
   );
