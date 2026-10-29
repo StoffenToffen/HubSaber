@@ -1,4 +1,3 @@
-import "@/app/globals.css";
 import MapsFormSkeleton from "@/components/MapsForm/MapsFormSkeleton";
 import PaginationSkeleton from "@/components/Pagination/PaginationSkeleton";
 import Skeleton from "@/components/Skeleton/Skeleton";
