@@ -1,3 +1,4 @@
+import externalLinkIcon from "@/public/external-link.svg";
 import logo from "@/public/logo.svg";
 import Image from "next/image";
 import styles from "./page.module.css";
@@ -47,6 +48,12 @@ const Page = () => {
             className={styles.cardLink}
           >
             Source Code
+            <Image
+              src={externalLinkIcon}
+              alt="external link"
+              width={10}
+              className={styles.cardLinkIcon}
+            />
           </a>
         </p>
 
@@ -59,6 +66,12 @@ const Page = () => {
             className={styles.cardLink}
           >
             BeatSaver API
+            <Image
+              src={externalLinkIcon}
+              alt="external link"
+              width={10}
+              className={styles.cardLinkIcon}
+            />
           </a>{" "}
           to get maps and the information about them, along with the different
           filters and sorting methods.
@@ -73,6 +86,12 @@ const Page = () => {
             className={styles.cardLink}
           >
             ScoreSaber API
+            <Image
+              src={externalLinkIcon}
+              alt="external link"
+              width={10}
+              className={styles.cardLinkIcon}
+            />
           </a>{" "}
           is used to get all the leaderboards.
         </p>

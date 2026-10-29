@@ -53,10 +53,21 @@
 
 .cardLink {
   color: var(--color-accent);
-  text-decoration: underline;
+  border-bottom: 1px solid transparent;
   transition: 0.1s;
 
   &:hover {
     color: white;
+    border-color: white;
+
+    & .cardLinkIcon {
+      filter: none;
+    }
   }
+}
+
+.cardLinkIcon {
+  margin-left: 0.25rem;
+  filter: brightness(0) invert(60%) sepia(64%) saturate(1922%)
+    hue-rotate(322deg) brightness(96%) contrast(111%);
 }
