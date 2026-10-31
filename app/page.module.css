@@ -12,6 +12,10 @@
   padding-block: 2rem;
 }
 
+.homeTxt {
+  font-weight: 300;
+}
+
 .divider {
   width: 15rem;
   margin-top: 4rem;
@@ -26,6 +30,7 @@
 @media screen and (min-width: 800px) {
   .cards {
     grid-auto-flow: column;
+    text-align: left;
   }
 }
 
@@ -43,6 +48,32 @@
   gap: 1rem;
   padding-bottom: 1rem;
   font-size: 1.25rem;
+}
+
+.cardTxt {
+  color: var(--color-text-dark);
+  font-weight: 300;
+}
+
+.cardsLink {
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-inline: auto;
+  border: var(--border);
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  transition: 0.1s;
+
+  &:hover {
+    box-shadow: var(--shadow);
+  }
+}
+
+.cardsLinkArrow {
+  rotate: -90deg;
+  margin-block: 0.5rem;
 }
 
 .homeLearn {

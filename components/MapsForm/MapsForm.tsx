@@ -65,7 +65,7 @@ const MapsForm = ({ params }: { params: Record<string, string> }) => {
           type="search"
           placeholder="Search for a map"
           name="search"
-          aria-label="Search"
+          aria-label="Search for a map"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           className={styles.searchInput}
@@ -84,6 +84,7 @@ const MapsForm = ({ params }: { params: Record<string, string> }) => {
         <div className={styles.sort}>
           <select
             name="sort"
+            aria-label="Sort"
             value={sortValue}
             onChange={(e) => setSortValue(e.target.value)}
             style={{
@@ -107,13 +108,13 @@ const MapsForm = ({ params }: { params: Record<string, string> }) => {
             {isAscending ? (
               <Image
                 src={ascendingIcon}
-                alt="ascending"
+                alt="Sorted ascending"
                 className={styles.sortBtnIcon}
               />
             ) : (
               <Image
                 src={descendingIcon}
-                alt="descending"
+                alt="Sorted descending"
                 className={styles.sortBtnIcon}
               />
             )}
